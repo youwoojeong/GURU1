@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href='./베라_탭.jpg' rel='shortcut icon' type='image/x-icon'>
+	<title>배스킨라빈스</title>
+
+	<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+
+    <style type="text/css">
+	/*메인*/
+    .br_menu {position: relative; height: 1157px; background: url('./menu/bg_menu.jpg') 50% 0 no-repeat;}
+	.br_menu .menu_list {height: 1066px; background: url('./menu/img_menu_list_210701.png') 50% 0 no-repeat; margin-top: 50px;}
+	.br_menu .title {padding-top: 78px;}
+	.br_menu .menu_list > div {position: absolute; }
+	.br_menu a {display: blcok; background-color: #000; opacity: 0; filter: alpha(opacity=0);}
+	.br_menu .icecream {top: 300px; left: 489px; opacity: 0;}
+	.br_menu .icecream a {width: 395px; height: 302px;}
+	.br_menu .icecreamcake {top: 320px; left: 922px; opacity: 0;}
+	.br_menu .icecreamcake a {width: 276px; height: 472px;}
+	.br_menu .baverage {top: 620px; left: 287px; opacity: 0;}
+	.br_menu .baverage a {width: 230px; height: 366px;}
+	.br_menu .coffee {top: 640px; left: 555px;opacity: 0;}
+	.br_menu .coffee a {width: 329px; height: 292px;}
+	.br_menu .dessert {top: 971px; left: 555px;opacity: 0;}
+	.br_menu .dessert a {width: 329px; height: 177px;}
+
+	.store_delivery .title {text-align: center;}
+	.store_delivery {position: relative; width: 1200px; margin: 0 auto;}
+	.store_delivery {height: 547px; box-sizing: border-box;}
+	.store_delivery:after {display: table; clear: both; content: "";}
+	.store_delivery .store,
+	.store_delivery .order {float: left; wdith: 50%;}
+	.store_delivery .title {padding: 95px 0 50px;}
+
+	/*sns 섹션*/
+		.snsbox {
+			width: 1200px;
+			margin: 0 auto;
+		}
+
+		.snsbox li{
+			float: left;
+			padding: 0 9px;
+			list-style: none;
+		}
+
+		.snsbox h3{
+			width: 1200px;
+			height: 22px;
+			padding-bottom: 26px;
+			text-align: center;
+			margin: 0;
+		}
+
+		.br_insta_title{
+			text-align: center;
+		}
+
+		.line {
+			position: absolute;
+			width: 1200px;
+			height: 1px;
+			content: "";
+			background: #dcd7d1;
+			z-index: -1;
+			top: 3638px;
+			font-size: 0;
+
+		}
+
+		.br_insta_title a{
+			display: inline-block;
+			z-index: 3;
+			top: 177px;
+			text-align: center;
+		}
+
+		.sns ul{
+			padding: 0;
+			width: 400px;
+			height: 62;
+		}
+
+		.sns {
+			width: 400px;
+			height: 62px;
+			margin: 0 auto;
+			padding-bottom: 35px;
+		}
+
+		.attraction-container {
+			width: 1300px;
+			height: 750px;
+			padding: 0;
+		}
+
+		.attraction-container li{
+			display: inline-block;
+			padding: 2px;
+			width: 236px;
+			height: 236px;
+		}
+
+		.attraction-container img{
+			width: 236px;
+			height: 236px;
+			display: ;
+		}
+
+		/*SNS 섹션 끝*/
+
+		/*인스타그램 피드 팝업*/
+
+		.popup {position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; transition: all 0.1s; opacity: 0; z-index: -1;}
+		.dim {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: -1; opacity: 0; transition: all 0.1s;}
+
+		.popup:target {opacity: 1; z-index: 3;}
+		.popup:target + .dim { opacity: 1; z-index: 2; }
+
+		.feed_function{
+			width: 320px;
+			height: 32px;
+			padding: 18px 0 19px 0;
+			position: relative;
+			border-top: 1px solid #e0e0e0;
+			margin: 0 20px;
+			style="display: inline-block;"
+		}
+
+		.feed_function a{
+			display: inline-block;
+		}
+
+		div.popup{
+			font-family: '맑은 고딕','Malgun Gothic','Open Sans','Noto Sans KR',sans-serif;
+			opacity: 0;
+		    transition: all 0.2s;
+		    
+		    z-index: -1;
+		}
+
+		.feed_wrap {
+			transform: translate(-50%, -50%);
+			width: 1000px;
+			height: 640px;
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    margin: 0 auto;
+		    padding: 0;
+		    display: block;
+		    float: left;
+		}
+
+		.popup:target{opacity: 1; z-index: 3;}
+		.popup:target + .popup_background {opacity: 1; z-index: 2;}
+
+		.popup_background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			
+			opacity: 0;
+			z-index: -1;
+
+		}
+
+		.close { 
+			position: fixed;
+			background: url(https://cdn.attractt.com/embed/images/sprite/embed_icon_@1x.png);
+			background-position: -76px 0;
+			font-size: 0;
+			width: 18px;
+			height: 18px;
+			right: 30px;
+			top: 20px
+
+		 }
+
+		.feed {
+			float: left;
+			margin: 0 auto;
+			width: 640px;
+			height: 640px;
+		}
+
+		.feed_right {
+			width: 360px; height:640px; background: #fff; display: inline-block;
+		}
+		.feed_content {
+			width:320px; height:530px; padding:20px; overflow: hidden scroll;
+		}
+		.user {
+			width:303px; height:40px; position:relative; overflow: hidden;
+		}
+		.user_name {
+			padding-left: 50px; top:-2px; position:absolute; left: 0; display: block;
+		}
+		.user_name a{
+			color: #23527c; text-decoration: none; font-size: 18px; display:block;
+		}
+		.user_thumbnail {
+			width:40px; height:40px;
+		}
+		.time {
+			font-size: 12px; color: #666; display:block
+		}
+		.feed-caption {
+			margin-top: 10px; color:#333; font-size:14px; white-space: pre-wrap;
+		}
+		.hashtag {
+			color:#003468; font-size:14px; margin-top: 10px;
+		}
+		.feed_function { font-size: 0; }
+		.Likes {
+			margin:7px 8px 0 0; width: 20px; height: 18px; background: url(https://cdn.attractt.com/embed/images/sprite/embed_icon_@1x.png); background-position: -36px 0;
+		}
+		.Comments {
+			margin:7px 7px 0 8px; width: 20px; height: 18px; background: url(https://cdn.attractt.com/embed/images/sprite/embed_icon_@1x.png); background-position: -36px -18px;
+		}
+		.Share {
+			margin:7px 5px 0 8px; width: 20px; height: 18px; background: url(https://cdn.attractt.com/embed/images/sprite/embed_icon_@1x.png); background-position: -36px -36px;
+		}
+		.sns-share {
+			background: white; border-radius: 2px; padding: 0 6px; height: 30px; position: absolute; top: -15px; left: 5px; box-shadow: 0 0 5px rgb(0 0 0 / 50%);
+		}
+
+
+		/*인스타그램 피드 팝업 끝*/
+</style>
+</head>
+
+<body>
+<!-- 메인 -->
+<div class="flavor_month">
+	<div class="top">
+		<a href="http://www.baskinrobbins.co.kr/menu/fom.php"><img src="./main/1620379683.jpg"></a>
+	</div>
+</div>
+	<div class="swiper-container mySwiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/menu/fom.php#area4">
+					<img src="./main/slide01.jpg">
+				</a>
+			</div>
+
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/event/view.php?flag=&seq=9224">
+					<img src="./main/slide02.png">
+				</a>
+			</div>
+
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/event/view.php?flag=&seq=9325&preview=Y">
+					<img src="./main/slide03.png">
+				</a>
+			</div>
+
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/event/view.php?flag=&seq=9284&preview=Y">
+					<img src="./main/slide04.png">
+				</a>
+			</div>
+
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/event/view.php?flag=&seq=9164">
+					<img src="./main/slide05.png">
+				</a>
+			</div>
+
+			<div class="swiper-slide">
+				<a href="http://www.baskinrobbins.co.kr/event/view.php?flag=&seq=8624">
+					<img src="./main/slide06.jpg">
+				</a>
+			</div>
+
+			<div class="swiper-button-next"></div>
+      		<div class="swiper-button-prev"></div>
+      		<div class="swiper-pagination"></div>
+    	</div>
+    </div>
+
+    <section class="br_event">
+		<h3 class="title" style="text-align: center;">
+			<img src="./event/h_event.png" alt="BR EVENT">
+		</h3>
+
+	</section>
+
+	<section class="br_menu">
+	<h3 class="title" style="text-align: center;"><img src="./menu/h_menu.png" alt="BR MENU"></h3>
+	<div class="menu_list">
+		<div class="icecream">
+			<a href="http://www.baskinrobbins.co.kr/menu/list.php?top=A">
+				<div class="sr_only">
+					<h4>ICECREAM</h4>
+					<p>프리미엄 아이스크림의 기준, 배스킨라빈스</p>
+				</div>
+			</a>
+		</div>
+		<div class="icecreamcake">
+			<a href="http://www.baskinrobbins.co.kr/menu/list.php?top=B">
+				<div class="sr_only">
+					<h4>ICECREAMCAKE</h4>
+						<p>아이와 어른이 좋아하는 아이스크림을 하나의 케이크에서 모두 즐기세요!</p>
+					</div>
+				</a>
+			</div>
+			<div class="baverage">
+				<a href="http://www.baskinrobbins.co.kr/menu/list.php?top=C">
+					<div class="sr_only">
+						<h4>BEVERAGE</h4>
+						<p>아이스크림으로 즐기는 배스킨라빈스만의 음료!</p>
+					</div>
+				</a>
+			</div>
+			<div class="coffee">
+				<a href="http://www.baskinrobbins.co.kr/menu/list.php?top=D">
+					<div class="sr_only">
+						<h4>COFFEE</h4>
+						<p>배스킨라빈스만의 부드러운 촉감과 달콤한 풍기</p>
+					</div>
+				</a>
+			</div>
+			<div class="dessert">
+				<a href="http://www.baskinrobbins.co.kr/menu/list.php?top=E">
+					<div class="sr_only">
+						<h4>DESSERT</h4>
+						<p>아이스크림을 더욱 재미있게! 간편하게 즐기는 방법!</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<div class="store_delivery">
+		<section class="store">
+			<h3 class="title"><img src="./main/h_store.png" alt="BR STORE"></h3>
+			<div class="box">
+				<a href="http://www.baskinrobbins.co.kr/store/map.php"><img src="./main/img_store.jpg" alt="내 주변 가장 가까운 배스킨라빈스 매장을 찾아보세요! 다양한 즐거움과 새로움! 우리동네 배스킨라빈스! 매장찾기"></a>
+			</div>
+		</section>
+		<section class="order">
+			<h3 class="title"><img src="./main/h_happyorder_delivery.png" alt="HAPPY ORDER & DELIVERY"></h3>
+			<div class="box">
+				<a href="http://www.baskinrobbins.co.kr/store/catering.php"><img src="./main/happyorder_delivery.png" alt="배스킨라빈스 모바일 사전주문 & 배달서비스 - 해피오더 배달 콜센터 1670-3131 주문에서 결제 & 배송까지 간단하게!"></a>
+			</div>
+		</section>
+	</div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="slidescript.js"></script>
+
+
+    <!-- SNS box -->
+	<section class="snsbox">
+		<h3>
+			<img src="http://www.baskinrobbins.co.kr/assets/images/main/h_sns.png" alt="SNS">
+		</h3>
+
+		<nav class="sns">
+			<ul>
+				<li>
+					<a href="https://www.facebook.com/baskinrobbinskr/" target="_blank">
+						<img src="http://www.baskinrobbins.co.kr/assets/images/main/sns_facebook.png" alt="FACEBOOK">
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/BaskinrobbinsKR" target="_blank">
+						<img src="http://www.baskinrobbins.co.kr/assets/images/main/sns_twitter.png" alt="TWITTER">
+					</a>
+				</li>
+				<li>
+					<a href="http://blog.naver.com/brgirl31" target="_blank">
+						<img src="http://www.baskinrobbins.co.kr/assets/images/main/sns_blog.png" alt="BLOG">
+					</a>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/baskinrobbinskorea/" target="_blank">
+						<img src="http://www.baskinrobbins.co.kr/assets/images/main/sns_instagram.png" alt="INSTAGRAM">
+					</a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/user/baskinrobbinskorea" target="_blank">
+						<img src="http://www.baskinrobbins.co.kr/assets/images/main/sns_youtube.png" alt="BLOG">
+					</a>
+				</li>
+				
+			</ul>
+		</nav>
+
+		<div class="br_insta_title" style="padding: 30px">
+			<h4 class="line">선</h4>
+			<a href="https://www.instagram.com/baskinrobbinskorea/" target="_blank" >
+				<img src="http://www.baskinrobbins.co.kr/assets/images/main/tit_sns.png" alt="BASKINROBBINS INSTAGRAM">
+			</a>
+		</div>
+
+		<div class="attraction-container" >
+			<ul style="padding: 0;">
+				<li>
+					<a href="#pop0" class="post" style="width: 240px; height: 240px;">
+						<img src="https://cdn.attractt.com/contents/2021/07/02/209209159_943911876392370_5276837283018837395_n.jpg" alt="youu_ri"></a>
+				</li>
+				<li>
+					<a href="#pop1" class="post" style="width: 240px; height: 240px;">
+						<img src="https://cdn.attractt.com/contents/2021/07/07/210874512_1007301013413563_6954170323110612411_n.jpg" alt="lilac5543"></a>
+				</li>
+				<li>
+					<a href="#pop2" class="post" style="width: 240px; height: 240px;">
+						<img src="https://cdn.attractt.com/contents/2021/08/02/227582003_252194340054295_2611565730535073364_n.jpg" alt="br_daerim3"></a>
+				</li>
+				<li>
+					<a href="#pop3" class="post" style="width: 240px; height: 240px;">
+						<img src="https://cdn.attractt.com/contents/2021/08/01/229647029_1198349514000259_3698195906908960410_n.jpg" alt="gomnam_food"></a>
+				</li>
+				<li>
+					<a href="#pop0" class="post" style="width: 240px; height: 240px;">
+						<img src="https://cdn.attractt.com/contents/2021/08/01/228207855_549952189379713_956398797642932902_n.jpg" alt="pig_jjung"></a>
+				</li>
+
+
+			</ul>
+		</div>
+
+	</section>
+
+	<div class="popup" id="pop0">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/07/02/209209159_943911876392370_5276837283018837395_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/youu_ri_" > youu_ri</a>
+							</span>
+							<span class="time">a month ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">@@ 먹어볼래? #꿀바망 
+
+오늘 출시된 따끈따끈한 신상임니다!
+7월 이달의맛으로 나온 꿀에 빠진 바나나와 망고 꿀바망 🍯🍌🥭
+바나나와 망고의 조합이라닛! 하면서 언능 먹어보았다.
+전체적인 베이스는 바나나맛이고 망고는 은은한 아이스크림이다.
+상큼 보다는 달달함에 가까운 이번 신상 ! 바나나우유+ 은은한 망고맛
+
+안에 시원한 망고 다이스가 박혔는데 과일그대로의 망고를 원했는데 조금 아쉬운 느낌^^
+
+그래도 전체적으로 부드러우면서 달고 바나나맛이랑 망고맛이 잘 어울려서 맛있게 먹었음👀
+
+🙏🏻그럼 오늘도 맛있게 잘 먹었습니다 🙏🏻
+.
+.
+.
+.
+
+#먹팔 #먹스타그램#좋아요반사#좋반#먹스타맞팔#foodforn#koreanfood#먹방 #디저트추천#자취스타그램#야식#배달음식 #음식스타그램#간식추천 #간식 #배라 #배라이달의맛 #이달의맛 #배스킨라빈스 #베스킨라빈스 #베라 #베라신상 #배라신상 #디저트#꿀에빠진바나나와망고</div>
+					<div class="hashtag">
+						#꿀바망#먹팔#먹스타그램#좋아요반사#좋반#먹스타맞팔#foodforn#koreanfood#먹방#디저트추천#자취스타그램#야식#배달음식#음식스타그램#간식추천#간식#배라#배라이달의맛#이달의맛#배스킨라빈스#베스킨라빈스#베라#베라신상#배라신상#디저트#꿀에빠진바나나와망고
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CQyR78xFlfY/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CQyR78xFlfY/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CQyR78xFlfY/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop1">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/07/07/210874512_1007301013413563_6954170323110612411_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/lilac5543" > lilac5543</a>
+							</span>
+							<span class="time">3 weeks ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">#꿀에빠진바나나와망고 #저녁식사후식으로</div>
+					<div class="hashtag">
+						#꿀에빠진바나나와망고 #저녁식사후식으로
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CQ_Lz6JFOAs/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CQ_Lz6JFOAs/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CQ_Lz6JFOAs/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop2">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/08/02/227582003_252194340054295_2611565730535073364_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/br_daerim3" > br_daerim3</a>
+							</span>
+							<span class="time">a day ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">#무더위 에는 #배스킨라빈스대림삼거리점 에서#이달의맛 으로‼️‼️
+#8월 이달의맛이 #아이스꼬북칩 으로 찾아왔어요🤎🤎
+.
+.
+🤎꼬북칩 아이스크림과 시나몬향 초콜릿 아이스크림 속에 초코코팅 꼬북칩과 시나몬 초콜릿이 쏘옥 쏘옥 들어갔어요🤎
+.
+.
+#초코 #초코덕후 라면 주목해야할 #배라 #이달의맛 을 드시러 오세요🤎🤎</div>
+					<div class="hashtag">
+						#무더위#배스킨라빈스대림삼거리점#이달의맛#8월#아이스꼬북칩#초코#초코덕후#배라
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CSB-kKZFip_/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CSB-kKZFip_/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CSB-kKZFip_/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop3">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/08/01/229647029_1198349514000259_3698195906908960410_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/gomnam_food" > gomnam_food</a>
+							</span>
+							<span class="time">2 days ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">베라 8월 이달의맛🍦
+아이스꼬북칩
+
+베라와 꼬북칩의 콜라보 아이스크림이예요~
+꼬북칩 초코츄러스로 만드는 초코아이스크림♡
+
+저는 꼬북칩 초코츄러스를 따로 마트에서
+구매해와서 같이 먹어봤는데요
+그냥 아이스크림만 먹는 것보다 과자와
+같이먹는게 훨씬더 제 입맛이었어요^^
+
+#베라8월 #베라신메뉴 #베라이달의맛 
+#아이스꼬북칩 #배스킨라빈스 #베스킨라빈스 
+#배라8월 #배라신메뉴 #배라이달의맛
+#MKYU #열정대학생 #딱김따 #f4f #선팔 #맞팔
+#맞팔해요 #맞팔환영 #맛스타그램 #맛팔 #맛팔해요  #먹스타그램 #먹팔</div>
+					<div class="hashtag">
+						#베라8월#베라신메뉴#베라이달의맛#아이스꼬북칩#배스킨라빈스#베스킨라빈스#배라8월#배라신메뉴#배라이달의맛#MKYU#열정대학생#딱김따#f4f#선팔#맞팔#맞팔해요#맞팔환영#맛스타그램#맛팔#맛팔해요#먹스타그램#먹팔
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CSBuCevlUjy/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CSBuCevlUjy/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CSBuCevlUjy/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop4">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/08/01/228207855_549952189379713_956398797642932902_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/pig_jjung" > pig_jjung</a>
+							</span>
+							<span class="time">2 days ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">8월에 최애 아이슈크림이 될 것 같다🍫
+#아이스꼬북칩#8월의맛#이달의맛#배스킨라빈스31#배라
+에제 #싱글킹 으로 먹어봤는데 역시 아는 맛이라도 맛있는건 어쩔 수 없네요😋 맘 같아선  파인트로 담아서 #초코츄러스꼬북칩 얹어서 먹고싶댜</div>
+					<div class="hashtag">
+						#아이스꼬북칩#8월의맛#이달의맛#배스킨라빈스31#배라#싱글킹#초코츄러스꼬북칩
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CSA686TlDju/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CSA686TlDju/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CSA686TlDju/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop5">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/08/01/227188225_576319483729722_2380961418498360542_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/loveiswisdom" > loveiswisdom</a>
+							</span>
+							<span class="time">2 days ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">#배스킨라빈스 #아이스꼬북칩</div>
+					<div class="hashtag">
+						#배스킨라빈스 #아이스꼬북칩
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CR_tVyAlZ_i/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CR_tVyAlZ_i/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CR_tVyAlZ_i/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop6">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/08/01/227509918_871166567110764_107779344544672805_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/chojh5678" > chojh5678</a>
+							</span>
+							<span class="time">3 days ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">#배스킨라빈스 #아이스꼬북칩</div>
+					<div class="hashtag">
+						#배스킨라빈스 #아이스꼬북칩
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CR_WTAXn_Yr/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CR_WTAXn_Yr/" title="Comments" class="Comments" >Comments</a>
+					<a href="https://www.instagram.com/p/CR_WTAXn_Yr/" title="Share" class="Share">Share</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+
+	<div class="popup" id="pop7">
+		<a href="#a" class="close" title="Close">Close</a>
+		<div class="feed_wrap">
+
+			<div class="feed">
+				<img class="thumbnail" src="https://cdn.attractt.com/contents/2021/07/31/227160616_968784883854954_1849575696553606624_n.jpg" style="width:100%; height: 100%; display: inline-block;">
+			</div>
+			<div class="feed_right">
+				<div class="feed_content">
+					<div class="user">
+						<img class="user_thumbnail" src="https://cdn.attractt.com/embed/images/error/404-profile.png">
+						<div class="user_name">
+							<span>
+								<a href="https://www.instagram.com/zomzom_roadstories" > zomzom_roadstories</a>
+							</span>
+							<span class="time">3 days ago</span>
+						</div>
+					</div>
+					<div class="feed-caption">베스킨라빈스31 아이스크림 - 아이스 꼬북칩 (2021년 8월 이달의 맛 아이스크림)
+
+더 많은 사진 &amp; 자세한 후기
+https:&#x2F;&#x2F;zomzom.tistory.com&#x2F;5193
+
+#baskinrobbins #BR31 #배스킨라빈스 #베라 #베스킨라빈스31 #신메뉴 #아이스크림 #サーティワン #アイスクリーム #韓国 #写真 #Icecream #아이스꼬북칩 #꼬북칩 #이달의맛 #오리온 baskinrobbinskorea</div>
+					<div class="hashtag">
+						#baskinrobbins#BR31#배스킨라빈스#베라#베스킨라빈스31#신메뉴#아이스크림#サーティワン#アイスクリーム#韓国#写真#Icecream#아이스꼬북칩#꼬북칩#이달의맛#오리온
+					</div>
+				</div>
+				<div class="feed_function">
+					<a href="https://www.instagram.com/p/CR88sPAB7RE/" title="Likes" class="Likes">Likes</a>
+					<a href="https://www.instagram.com/p/CR88sPAB7RE/" title="Comments" class="Comments" >Comments</a>
+					<a href="www.instagram.com/p/CR88sPAB7RE/" title="Share" class="Share">Share</a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>	
+	<!-- SNS box 끝 -->
+</body>
+</html>

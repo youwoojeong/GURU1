@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang='ko' >
+<head>
+<meta charset="utf-8">
+<!-- <link href="alignpractice.css" rel="stylesheet" type="text/css" /> --> 
+
+<!-- 메뉴 -->
+
+<style type="text/css">
+      * {
+         list-style: none;
+         text-decoration: none;
+         border-collapse: collapse;
+         margin: 0px;
+         padding: 0px;
+      }
+
+      body {
+        border-color: white ;
+         color: #483834;
+         font-size: 13px;
+         font-family: "Nanum Barun Gothic", "나눔고딕", "NanumGothic", "돋움", "Dotum", sans-serif;
+         line-height: 1.5;
+         letter-spacing: -.05em;
+
+      }
+
+      img {
+         border: 0;
+         vertical-align: top;
+      }
+
+      ol, ul {
+         list-style: none;
+      }
+
+      nav {
+         display: block;
+      }
+
+      a {
+         color: #483834;
+
+      }
+
+      div { display: block; }
+
+      /*맨 위*/
+      .header {
+
+         min-width:1200px; 
+         border-top:3px solid #ff7c98; 
+         border-bottom:1px solid #3f291a; 
+         background:url(image/bg_header.gif) 50% 0 repeat-x;
+      }
+      .header .top {
+
+         position: relative;
+         width: 1200px;
+         height: 114px;
+         padding-top: 21px;
+         margin: 0 auto;
+      }
+      .header .logo {
+         text-align: center;
+      }
+
+      .header .sns {
+
+         position: absolute;
+         top: 50px;
+         left: 0px;
+         text-align: left;
+
+      }
+      .header .sns li {
+
+         float: left;
+         padding-right: 10px;
+      }
+      .header .etc {
+         position: absolute;
+         top: 39px;
+         right: 0;
+         height: 54px;
+         line-height: 54px;
+      }
+      .header .etc li {
+         float: left;
+         padding-right: 20px;
+         font-size: 11px;
+      }
+
+      /*메뉴바*/
+      .header .menubar {
+         width: 1200px;
+         margin: 0 auto;
+      }
+
+      /*로그인&회원가입*/
+      .header .member, .header .member li {
+         float: left;
+      }
+      .header .member a {
+         float: left;
+         display: inline-block;
+         padding: 0 23px;
+      }
+      .header .member span {
+         display: block;
+         height: 46px;
+         background: url(image/gnb_menu.png) no-repeat;
+         text-indent: -9999em;
+      }
+      .header .member .login a { padding-left: 0; }
+      .header .member .login span {
+         width: 35px;
+         background-position: 0px -1px;
+      }
+      .header .member .join span {
+         width: 35px;
+         background-position: -97px -1px;
+      }
+
+      /*내려오는 메뉴*/
+      .gnb { float: right; }
+      .gnb .gnb_main span {
+         display: block;
+         height: 46px;
+         background: url(image/gnb_menu.png) no-repeat;
+         text-indent: -9999em;
+         line-height: 46px;
+      }
+      .gnb .gnb_main a {
+         display: block;
+         padding: 0 59px;
+      }
+      .gnb .gnb_sub {
+         display: block;
+         padding: 5px 0;
+         color: #7b7b7b;
+         line-height: 1.2;
+         text-transform: uppercase;
+      }
+      .gnb .gnb_sub {
+         overflow: hidden;
+         position: absolute;
+         top: 100%;
+         left: 0;
+         height: 0;
+         z-index: 1000;
+         font-size: 14px;
+         font-weight: 300;
+         text-align: center;
+      }
+      .gnb .gnb_wrap > ul > li {
+         float: left;
+         position: relative;
+      }
+      .header .menubar {
+         width: 1200px;
+         margin: 0 auto;
+      }
+      .header .menubar:after,
+      .header .member ul:after,
+      .gnb .gnb_wrap > ul:after {
+         display: table;
+         clear: both;
+         content: "";
+      }
+      .gnb .gnb_sub {
+         overflow: hidden;
+         position: absolute;
+         top: 100%;
+         left: 0;
+         height: 0;
+         z-index: 1000;
+         font-size: 14px;
+         font-weight: 300;
+         text-align: center;
+         -webkit-transition: height .5s ease;
+         transition: height .5s ease;
+      }
+      .gnb .gnb_sub li { padding-bottom: 12px; }
+      .gnb .gnb_sub li:first-child { padding-top: 40px; }
+      .gnb .gnb_sub a {
+         display: block;
+         padding: 5px 0;
+         color: #7b7b7b;
+         line-height: 1.2;
+         opacity: 0;
+         text-transform: uppercase;
+         -webkit-transition: opacity .3s linear;
+         transition: opacity .3s linear;
+      }
+      .gnb .gnb_bg {
+         overflow:hidden; 
+         position:absolute; 
+         top:185px; 
+         left:0; 
+         height:0; 
+         z-index:999; 
+         min-width:100%; 
+         border-bottom:1px solid #693337; 
+         background:#fff; 
+         -webkit-transition:height .5s ease; 
+         transition:height .5s ease;
+      }
+      .gnb .gnb_bg div {
+         width:1200px; 
+         height:204px; 
+         margin:0 auto; 
+         background:url(image/img_happypoint_app.jpg) no-repeat 0 65px;}
+      .gnb:hover .gnb_sub,
+      .gnb:hover .gnb_bg { height:275px; }
+      .gnb:hover .gnb_bg { margin-top:1px; }
+      .gnb:hover .gnb_sub { overflow:visible; }
+      .gnb:hover .gnb_sub a {
+         color:#948780; 
+         opacity:1; 
+         -webkit-transition:opacity .5s linear; 
+         transition:opacity .5s linear;
+      }
+      .gnb_sub span:hover { color:#ff75ac; }
+      .gnb:hover .gnb_flavor .gnb_sub {
+         margin-left:-44px; 
+         opacity:1; 
+         -webkit-transition-delay:.3s; 
+         transition-delay:.3s;
+      }
+      .menu_area { border-top: 1px solid #C1C1C1}
+      .gnb_list span { color: #7b7b7b; }
+
+      /*이달의 맛*/
+      .gnb .gnb_flavor .gnb_main a { padding-left: 0; }
+      .gnb .gnb_flavor .gnb_main span {
+         width: 164px;
+         background-position: -133px -3px;
+      }
+      .gnb .gnb_flavor .gnb_sub {
+         padding-top: 2px;
+         opacity: 0;
+         -webkit-transition: opacity .3s ease;
+         transition: opacity .3s ease;
+      }
+      .gnb .gnb_flavor .gnb_sub a { padding: 0; }
+
+      /*메뉴*/
+      .gnb .gnb_menu .gnb_main span {
+         width: 42px;
+         background-position: -415px -3px;
+      }
+      .gnb .gnb_menu .gnb_sub { margin-left: 35px; }
+
+      /*영양성분 및 알레르기*/
+      .gnb .gnb_nutrition .gnb_main a { padding: 0 27.5px; }
+      .gnb .gnb_nutrition .gnb_main span {
+         width: 105px;
+         background-position: -545px -3px;
+      }
+      .gnb .gnb_nutrition .gnb_sub { margin-left: 50px; }
+
+      /*이벤트*/
+      .gnb .gnb_event .gnb_main span {
+         width: 42px;
+         background-position: -737px -3px;
+      }
+      .gnb .gnb_event .gnb_sub { margin-left:43px; }
+
+      /*매장*/
+      .gnb .gnb_store .gnb_main span {
+         width: 49px;
+         background-position: -897px -3px;
+      }
+      .gnb .gnb_store .gnb_sub { margin-left:57px; }
+
+      /*about*/
+      .gnb .gnb_about .gnb_main a { padding-right: 0; }
+      .gnb .gnb_about .gnb_main span {
+         width: 49px;
+         background-position: -1057px -3px;
+      }
+      .gnb .gnb_about .gnb_sub { margin-left:55px; }
+      .gnb .gnb_about .gnb_sub { 
+         text-align:right; 
+         margin-left:0; 
+         width:100%; 
+         padding-left:30px;
+      }
+      .gnb .gnb_about .gnb_sub li {
+         white-space:nowrap; 
+         text-align:center;
+      }
+
+
+      /*맨 밑*/
+      #footer {
+         min-width: 1200px;
+         padding-bottom: 60px;
+         border-top: 1px solid #feaf2b;
+         display: block;
+      }
+      #footer .policy, #footer .brand_family .inner,
+      #footer .info {
+         width: 1200px;
+         margin: 0 auto;
+      }
+
+      /*policy*/
+      #footer .policy {
+         padding: 0 80px;
+         height: 77px;
+         line-height: 77px;
+         box-sizing: border-box;
+      }
+      #footer .policy li {
+         float: left;
+         width: 16.66%;
+         text-align: center;
+      }
+      #footer .policy a {
+         color: #726454;
+         font-size: 14px;
+      }
+      #footer .policy .privacy a {
+         color: #ff7c98;
+         font-weight: bold;
+      }
+
+      /*brand_family*/
+      #footer .brand_family {
+         background-color: #f9f8f7;
+      }
+      #footer .brand_family .inner {
+         position: relative;
+         height: 75px;
+      }
+      #footer .brand ul {
+         padding: 22px 0 0 222px;
+      }
+      #footer .brand li {
+         float: left;
+      }
+      #footer .brand .li_1 { width: 111px; }
+      #footer .brand .li_2 { width: 118px; }
+      #footer .brand .li_3 { width: 182px; }
+      #footer .brand .li_4, #footer .brand .li_5 { padding-right: 9px; }
+
+      #footer .familysite {
+         position: absolute;
+         top: 21px;
+         right: 196px;
+         width: 150px;
+         background-color: #fff;
+      }
+
+      /*family site 버튼*/
+      #footer .familysite button.on {
+         background-image: url(image/family_size_on.png);
+      }
+      #footer .familysite button {
+         width: 100%;
+         height: 32px;
+         padding-left: 11px;
+         border-radius: 5px;
+         border: 1px solid #d1cecc;
+         background: transparent url(image/family_size_off.png) no-repeat 100% 0;
+         color: #b1ab9f;
+         font-size: 11px;
+         text-align: left;
+         -webkit-box-shadow: 2px 2px 2px 0px rgb(234 233 232 / 80%);
+         -moz-box-shadow: 2px 2px 2px 0px rgba(234,233,232,0.8);
+         box-shadow: 2px 2px 2px 0px rgb(234 233 232 / 80%);
+      }
+
+      /*info*/
+      #footer .info {
+         padding-top: 48px;
+         color: #635b56;
+         font-size: 11px;
+         text-align: center;
+      }
+      #footer .info .logo { padding-bottom: 35px; }
+
+      #footer .info > div p { 
+         padding-right: 15px;
+      }
+
+      #footer .info .copyright {
+         padding-top: 12px;
+         color: #b1adab;
+         font-size: 11px;
+      }
+
+      #footer .info .line_1 p { display: inline-block; }
+      #footer .info .line_2 p { display: inline-block; }
+   </style> 
+
+
+<style>
+
+/*글꼴*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.brown_small{
+   color: #948780;
+   font-size: 13px;
+   letter-spacing: -0.09em;
+   word-spacing: 0.01em;
+}
+div.black_bold{
+   color: #2F231C;
+   font-family: 'Noto Sans KR', sans-serif;
+   font-size: 17px;
+   letter-spacing:  -0.1em;
+   word-spacing: 0.1em;
+}
+
+div.pink_big{
+   color: #FF7C98;
+    font-family: normal;
+   font-size: 17px;
+   letter-spacing:  -0.1em;
+   word-spacing: 0.1em;
+   font-weight: 300 ;
+}
+
+
+div.BOX{
+   margin: 120px 300px 150px 300px;
+}
+
+div.box1{
+   color: #2F231C;
+   font-family: 'Noto Sans KR', sans-serif;
+   font-size: 20px;
+   letter-spacing:  -0.1em;
+   word-spacing: 0.1em;
+   font-weight: 400 ;
+}
+
+/*큰 박스1*/
+div.box2{
+   margin: 40px 0px 40px 0px;
+
+  border-top-style: solid;
+   border-right-style: none;
+   border-bottom-style: solid;
+   border-left-style: none;
+
+   border-top-width: 2px;
+   border-top-color: #FF99BF;
+   border-bottom-width: 1px;
+   border-bottom-color: #E1E3E5 ;
+
+   padding:40px 0px 40px 0px ;
+
+   /*가로정렬*/
+   display: flex;
+   
+}
+
+
+
+/*로그인_아이디*/
+input{
+   width: 190px ;
+   padding:  18px 45px ;
+   border: none;
+   background-color: #EFEFEF ;
+   
+   color: #696663 ;
+   font-style: normal;
+   font-size: 13px;
+
+   background-image: url('./베라_아이콘/베라_로그인/2.png');
+   background-size: 16px ;
+   background-position: 15px 15px ;
+   background-repeat: no-repeat;
+}
+
+/*로그인 버튼*/
+/*button{
+   margin: 0px 0px 10px 0px;
+   border: none;
+   background-color: white;
+}*/
+
+/*링크 밑줄 없애기*/
+ a {
+   text-decoration:none;
+   flex: 1 ;
+   /*margin: 0px 2px 0px 2px;*/
+   padding: 0px 17px 0px 12px;
+
+   letter-spacing:  -0.1em;
+   word-spacing: 0.1em;
+
+   color: black;
+   font-style: normal;
+   font-size: 12px;
+
+   /*border-right: 2px solid #E1E3E5;*/
+ }
+
+
+
+ /*1.가로정렬_로그인*/
+ div.parent1{
+   /*width: 200px;*/
+   color: silver ;
+   font-style: normal;
+   font-size: 5px;
+   display: flex;
+}
+div.log2{
+   flex: 1;
+   margin: 0px;
+   }
+
+.login_button{
+   flex: 1;
+   
+}
+
+
+
+
+
+/*2.가로정렬_큰 박스*/
+div.box2_first{
+   padding: 0px 30px 0px 0px;
+   border-right: 1.5px solid #E1E3E5;
+    width: 350px;
+   flex:1;
+ }
+
+ div.box2_second{
+   flex:1;
+   margin: 0px 0px 0px 30px;
+   
+   
+
+
+ }
+
+
+/*정보 가로정렬*/
+div.정보_가로정렬{
+   display: flex;
+
+}
+div.box2_내용2-1{
+   flex:1;
+ }
+ div.box2_내용2-2{
+   flex:1;
+ }
+
+
+ /*3가지 링크*/
+ div.box2-1{
+   margin: 0px 10px 0px 10px;
+   width-right: 10px;
+   display: flex;
+ }
+div.link1{
+   flex:1;
+ }
+ div.link2{
+   flex:1;
+ }
+ div.link3{
+   flex:1;
+ }
+
+div.box4{
+   margin: 30px 0px 30px 110px;
+}
+
+
+/*emty*/
+/*아이디와 비번 폼 사이*/
+div.emty{
+   margin: 10px;
+}
+div.emty2{
+
+}
+div.emty3{
+   margin: 10px 20px 10px 20px;
+   flex: 1;
+ }
+
+ div.emty4{  /*로그인폼 윗부분*/
+    margin: 20px;
+ }
+div.emty4{  
+    margin: 22px;
+ }
+ div.emty5{
+    margin: 9px;
+ }
+
+ div.emty7{
+    margin: 9px;
+ }
+        
+
+    
+</style>
+
+    <!-- 배라 탭(이미지) -->
+    <link href='./베라_아이콘/베라_로그인/베라_탭.jpg' rel='shortcut icon' type='image/x-icon'>
+    <title>베스킨라빈스</title>
+
+</head>
+
+<body>
+
+<!-- 맨 위 -->
+<div class="header" >
+   <div class="top" >
+      <!-- 가운데 로고 -->
+      <div class="logo" >
+         <a href="brmain.html">
+            <img src="image/logo_baskinrobbins.png">
+         </a>
+      </div>
+      <!-- 왼쪽 sns 링크 -->
+      <nav class="sns">
+         <ul>
+            <li>
+               <a href="https://www.facebook.com/baskinrobbins.kr/" target="_blank">
+                  <img src="image/icon_facebook.png" alt="FACEBOOK">
+               </a>
+            </li>
+            <li>
+               <a href="https://twitter.com/BaskinrobbinsKR" target="_blank">
+                  <img src="image/icon_twitter.png" alt="TWITTER">
+               </a>
+            </li>
+            <li>
+               <a href="http://blog.naver.com/brgirl31" target="_blank">
+                  <img src="image/icon_blog.png" alt="BLOG">
+               </a>
+            </li>
+            <li>
+               <a href="https://www.instagram.com/baskinrobbinskorea/" target="_blank">
+                  <img src="image/icon_instagram.png" alt="INSTAGRAM">
+               </a>
+            </li>
+            <li>
+               <a href="https://www.youtube.com/user/baskinrobbinskorea" target="_blank">
+                  <img src="image/icon_youtube.png" alt="YOUTUBE">
+               </a>
+            </li>
+         </ul>
+      </nav>
+      <!-- 오른쪽 고객센터&contact us&검색 -->
+      <nav class="etc" >
+         <ul>
+            <li>
+               <a href="http://www.baskinrobbins.co.kr/customer/ccm.php">고객센터</a>
+            </li>
+            <!-- contact us 링크 넣기 -->
+            <li>
+               <a href="contact_us.html">CONTACT US</a>
+            </li>
+            <li>
+               <img src="image/icon_search.png">
+            </li>
+         </ul>
+      </nav>
+   </div>
+   <!-- 메뉴바 -->
+   <div class="menu_area">
+   <div class="menubar">
+      <!-- 로그인&회원가입 -->
+      <nav class="member">
+         <ul>
+            <li class="login">
+               <!-- 로그인창 링크 넣기 -->
+               <a href="login.html">
+                  <span>LOGIN</span>
+               </a>
+            </li>
+            <li class="join">
+               <a href="https://www.happypointcard.com/page/join/index.spc" target="_blank">
+                  <span>JOIN</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+
+      <nav class="gnb">
+      <div class="gnb_wrap">
+         <ul>
+            <!-- 이달의 맛 -->
+            <li class="gnb_flavor">
+               <div class="gnb_main">
+                  <a href="http://www.baskinrobbins.co.kr/menu/fom.php">
+                     <span>FLAVOR OF THE MONTH</span>
+                  </a>
+               </div>
+               <div class="gnb_sub">
+                  <a href="http://www.baskinrobbins.co.kr/menu/fom.php">
+                     <img src="image/img_monthly_fom.png" alt style="margin-left: 37px;">
+                  </a>
+               </div>
+            </li>
+            <!-- 메뉴 -->
+            <li class="gnb_menu" >
+               <div class="gnb_main">
+                  <a href="menu.html">
+                     <span>MENU</span>
+                  </a>
+               </div>
+               <ul class="gnb_sub">
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/list.php?top=A">
+                        <span>아이스크림</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/list.php?top=B">
+                        <span>아이스크림케이크</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/list.php?top=C">
+                        <span>음료</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/list.php?top=D">
+                        <span>커피</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/list.php?top=E">
+                        <span>디저트</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!-- 영양 성분 및 알레르기 -->
+            <li class="gnb_nutrition">
+               <div class="gnb_main">
+                  <a href="http://www.baskinrobbins.co.kr/menu/nutrition_new.php">
+                     <span>영양성분 및 알레르기</span>
+                  </a>
+               </div>
+               <ul class="gnb_sub">
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/nutrition_new.php?top=A">
+                        <span>아이스크림</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/nutrition_new.php?top=C">
+                        <span>음료</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/menu/nutrition_new.php?top=D">
+                        <span>커피</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!-- 이벤트 -->
+            <li class="gnb_event">
+               <div class="gnb_main">
+                  <a href="http://www.baskinrobbins.co.kr/event/list.php">
+                     <span>EVENT</span>
+                  </a>
+               </div>
+               <ul class="gnb_sub">
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/event/list.php">
+                        <span>진행중이벤트</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/event/winner.php">
+                        <span>당첨자발표</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!-- 매장 -->
+            <li class="gnb_store">
+               <div class="gnb_main">
+                  <a href="http://www.baskinrobbins.co.kr/store/map.php">
+                     <span>STORE</span>
+                  </a>
+               </div>
+               <ul class="gnb_sub">
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/store/map.php">
+                        <span>매장찾기</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/customer/ccm.php">
+                        <span>고객센터</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/store/catering2.php">
+                        <span>단체주문</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!-- 상세사항 -->
+            <li class="gnb_about">
+               <div class="gnb_main">
+                  <a href="http://www.baskinrobbins.co.kr/about/notice_list.php">
+                     <span>ABOUT</span>
+                  </a>
+               </div>
+               <ul class="gnb_sub">
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/about/notice_list.php">
+                        <span>공지사항</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/about/press_list.php">
+                        <span>보도자료</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/about/jobs.php">
+                        <span>채용정보</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <a href="http://www.baskinrobbins.co.kr/about/br_system.php">
+                        <span>점포개설문의</span>
+                     </a>
+                  </li>
+                  <li class="gnb_list">
+                     <!-- contact us 링크 넣기 -->
+                     <a href="contact_us.html">
+                        <span>CONTACT US</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <div class="gnb_bg"><div></div></div>
+      </nav>
+   </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+<!-- 전체 박스(margin) -->
+<div class='BOX' >
+
+   <!-- 로그인 안내 문자 -->
+   <div class='box1'>
+       <center><img src='./베라_아이콘/베라_로그인/베라_로그인.png'><br>
+       배스킨 라빈스 홈페이지에 오신 것을 환영합니다.</center>
+   </div>
+
+   <!-- 큰 박스1 -->
+   <div class='box2' >
+      <!-- 1.로그인 -->
+      <div class='box2_first' >
+
+          <!-- 텍스트1 -->
+           <div class='black_bold'>
+             배스킨라빈스 로그인
+           </dic>
+          
+          <!-- 텍스트2 -->
+           <div class='pink_big'> 
+              해피포인트 아이디로 간편하게 로그인 하세요.
+           </div>
+           <div class='emty4'>
+            </div>
+
+          <!-- 1. 가로 정렬 -->
+          <div class='parent1'  >
+              <!-- 로그인 폼 -->
+              <div calss='login_form'>
+                 <!-- 빈 공간 -->
+                 <div class='emty2'>
+                 </div>
+                 <!-- 아이디 -->
+                 <div calss='id'>
+                     <form name='id' method='get'>
+                         <input type="text" name="log" placeholder="아이디를 입력하세요" name='id'>
+                    </form></div>
+                 <!-- 빈 공간 -->
+                 <div class='emty'>
+
+                  </div>
+                <!-- 비번 -->
+                <div class='pw'>
+                     <form name='password' method='get'>
+                         <input type="password" name="pw" placeholder="비밀번호를 입력하세요" name='pw' style="background-image: url('./베라_아이콘/베라_로그인/3.png');">
+                    </form>
+                 </div>
+              </div>
+
+              <!-- 로그인 버튼 -->
+              <div calss='login_button'>
+                  <form name='button' method='get'>
+                         <input type="image" name="log2"  name='log2' src='./베라_아이콘/베라_로그인/베라_로그인 버튼.png'   style='  width: 120px; margin: 0px; padding: 0px; background-color:white; background-image:none; position: absolute; top: 520px; left: 610px;'>
+                  </form>
+               </div>
+              
+            </div>
+
+          <!-- 2. 가로 정렬 -->
+              <!-- 3가지 링크 -->
+              <div class='emty4'></div>
+              <div calss='box2-1' >
+                 
+                     <a href='https://www.happypointcard.com/page/member-info/find-id-pw-form.spc?findType=id' style='color:gray; padding: 0px 17px 0px 0px; border-right: 2px solid #E1E3E5;'>아이디 찾기</a>
+                 
+                     <a href='https://www.happypointcard.com/page/member-info/find-id-pw-form.spc?findType=pw' style='color:gray; border-right: 2px solid #E1E3E5;'>비밀번호 재발급</a>
+                 
+                     <a href='https://www.happypointcard.com/page/join/index.spc' style='color:gray; border-right:none; border-right: 2px solid #E1E3E5;'>해피포인트 가입</a>
+                 
+
+               </div>
+            
+      </div>
+          
+   
+ 
+     
+
+      </div>
+
+      <!-- 정보 -->
+      <div class='box2_second'>
+          <div class='black_bold' style=' letter-spacing: -0.08em; word-spacing: 0.05em;'>
+             SPC 통합회원 서비스
+         </div>
+         <div class='emty7'>
+         </div>
+
+         <p class='brown_small'>
+             하나의 ID/Password로 SPC가 운영하는 사이트(배스킨라빈스, 던킨도너츠,<br>
+             해피포인트카드, 파리바게뜨, 파리크라상, 파스쿠찌, SPC그룹, 우리밀)를 한번에!!<br>
+             간단한 동의 절차만 거치면 하나의 ID/Password로 제휴사이트를<br>
+             로그인 하실 수 있습니다.<br><br><br>
+         </p>
+
+         <div class='black_bold'> <!-- 이 이름 혜택 제목으로 하기 -->
+             고객센터<br>
+         </div>
+
+         <div class='emty7'>
+         </div>
+
+         <div class='정보_가로정렬'>
+             <!-- brown_small -->
+             <p class='brown_small' >
+                 운영시간<br>
+                 Tel.
+             </p>
+
+             <div class='emty3'>
+                
+             </div>
+
+             <!-- brown_big -->
+             <p calss='box2_내용2-2' style='font-size: 13.5px; letter-spacing: -0.09em; word-spacing: 0.01em; color: #2F231C; position: absolute; top: 630px; left: 845px; '>
+                 월~금 09:00~17:30 토/일요일 휴무<br>
+                 080-555-3131(수신자부담)
+             </p>
+         </div>
+      </div> 
+
+   </div>
+
+   <div class='box3' style='color: #2F231C; font-family: normal; font-size: 15px; letter-spacing: -0.1em; word-spacing: 0.1em; font-weight:300 '>
+   <center>해피포인트 회원이 아니시라면 지금 해피포인트에 가입하시고<br>
+    다양한 혜택을 경험하세요.</center>
+   </div>
+
+   <!-- 혜택 박스 -->
+   <div class='box4' style='display:flex'>
+      <div class='box4-1' style='flex:1'>
+         <img src='./베라_아이콘/베라_로그인/베라_로그인 컴퓨터.jpg'  width='80px' style='position:absolute; top:833px; left:320px;'>
+         <div class='black_bold' style='font-size: 17px;'>혜택 하나</div>
+         <div class='emty5'></div>
+         <div class='brown_small' style='letter-spacing: -0.08em; word-spacing: 0.08em ; font-size: 13px; font-family: "Noto Sans KR", sans-serif;'>배스킨라빈스 온라인 이벤트<br>
+         행사에 참여할 수 있습니다.</div>
+      </div>
+
+      <div class='box4-2' style='flex:1'>
+         <img src='./베라_아이콘/베라_로그인/베라_로그인 아크.jpg'  width=' 80px' style='position: absolute; top: 833px; left: 650px;'>
+         <div class='black_bold' style='font-size: 17px;margin: 0px 0px 0px 65px;'>혜택 둘</div>
+         <div class='emty5'></div>
+         <div class='brown_small' style='letter-spacing: -0.08em; word-spacing: 0.08em ; font-size: 13px; font-family: "Noto Sans KR", sans-serif;margin: 0px 0px 0px 65px;'>월별 신제품을 보다<br>
+         먼저 만날 수 있습니다.</div>
+      </div>
+
+      <div class='box4-3'style='flex:1' >
+         <img src='./베라_아이콘/베라_로그인/베라_로그인 편지.jpg' width=' 80px'style='position: absolute; top: 833px; left: 960px;'>
+         <div class='black_bold' style='font-size: 17px;margin: 0px 0px 0px 110px;'>혜택 셋</div>
+         <div class='emty5'></div>
+         <div class='brown_small' style='letter-spacing: -0.08em; word-spacing: 0.08em ; font-size: 13px; font-family: "Noto Sans KR", sans-serif; margin: 0px 0px 0px 110px;'>배스킨라빈스 이벤트 정보<br>
+         메일링을 받아 볼 수 있습니다.</div>
+      </div>
+   </div>
+
+</div>
+
+
+
+
+
+<!-- 맨 밑 -->
+<div id="footer">
+   <nav class="policy">
+      <ul>
+         <li style="width:12%">
+            <a href="http://www.baskinrobbins.co.kr/about/br_system.php">점포개설문의</a>
+         </li>
+         <li style="width:12%">
+            <a href="http://www.baskinrobbins.co.kr/about/jobs.php">채용문의</a>
+         </li>
+         <li style="width:12%">
+            <a href="http://www.spc.co.kr/spc/group/GEM_info.spc" target="_blank">윤리신고센터</a>
+         </li>
+         <li style="width:12%">
+            <a href="https://www.happypointcard.com/page/customer/term.spc" target="_blank">이용약관</a>
+         </li>
+         <li class="privacy" style="width:15%">
+            <a href="http://www.baskinrobbins.co.kr/customer/policy.php">개인정보처리방침</a>
+         </li>
+         <li style="width:20%">
+            <a href="http://www.baskinrobbins.co.kr/customer/policy_cctv.php">영상정보처리기기운영관리방침</a>
+         </li>
+         <li style="width:17%">
+            <a href="http://happy.spc.co.kr/indexframe.jsp" target="_blank">거래희망회사 사전등록</a>
+         </li>
+      </ul>
+   </nav>
+   <div class="brand_family">
+      <div class="inner">
+         <nav class="brand">
+            <ul>
+               <li class="li_1">
+                  <a href="https://www.happypointcard.com/page/main/index.spc" target="_blank">
+                     <img src="image/brand_happypoint.png" alt="HAPPY POINT">
+                  </a>
+               </li>
+               <li class="li_2">
+                  <a href="http://m.celectory.com/mobile/gift/recommend?" target="_blank">
+                     <img src="image/brand_happymarket.png" alt="HAPPY MARKET">
+                  </a>
+               </li>
+               <li class="li_3">
+                  <a href="http://www.spc.co.kr/contributionAll" target="_blank">
+                     <img src="image/brand_spc.png" alt="SPC그룹 사회공헌활동 SPC 행복한 이야기">
+                  </a>
+               </li>
+               <li class="li_4">
+                  <a href="https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.BASKINROBBINS.CO.KR&lang=ko" target="_blank">
+                     <img src="image/brand_norton.gif" alt="Norton SECURED">
+                  </a>
+               </li>
+               <li class="li_5">
+                  <a href="http://www.kca.go.kr/ccm/" target="_blank">
+                     <img src="image/brand_ccm.gif" alt="소비자중심경영 인증제도">
+                  </a>
+               </li>
+               <li>
+                  <a href="http://knqa.ksa.or.kr/knqa/2276/subview.do" target="_blank">
+                     <img src="image/brand_ksa.png" alt="국가품질상 - KSA 한국표준협회">
+                  </a>
+               </li>
+            </ul>
+         </nav>
+         <nav class="familysite">
+            <button type="button">FAMILY SITE</button>
+         </nav>
+      </div>
+   </div>
+   <div class="info">
+      <h1 class="logo">
+         <img src="image/footer_logo.png" alt="baskin robbins">
+      </h1>
+      <div class="line_1">
+         <p>사업자 등록번호 : 303-81-09535</p>
+         <p>비알코리아(주) 대표이사 도세호</p>
+         <p>서울특별시 서초구 남부순환로 2620(양재동 11-149번지)</p>
+      </div>
+      <div class="line_2">
+         <p>TEL : 080-555-3131</p>
+         <p>개인정보관리책임자 : 김경우</p>
+      </div>
+      <p class="copyright">
+         Copyright ⓒ 2016 BRKOREA Company. All Rights Reserved.
+      </p>
+   </div>
+</div>
+
+</body>
+</html>
